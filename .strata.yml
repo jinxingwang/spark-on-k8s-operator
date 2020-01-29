@@ -1,0 +1,15 @@
+pipeline_template: docker/Jenkinsfile-1
+email_reply_to: flowsnake@salesforce.com
+time_out_mins: 180                                  # (Optional default = 180
+number_of_artifacts_to_keep: 3                      # (Optional) default = 3
+compliance_required: false
+docker_test_images:                                 # The image(s) that will be used to run your unit tests (Unit tests will be run against each image)
+- dva/spark-operator-builder:1
+unit_tests_command: echo                            # The command we'll run for the unit tests stage
+integration_tests_command: echo                     # This works as before. If you don't provide any we use docker-compose
+                                                    # to run tests. If you want to run your own integration-command, then it should have "docker" in it.
+                                                    # ex: make integration-test-with-docker,otherwise provided command will be ignored and we default to docker-compose
+docker_images:                                      # (Optional) Provide a map of image names to custom Dockerfile names
+  kubernetes-spark-operator-v1beta1-0.9.0-2.4.0: ./Dockerfile
+production_branch: sfdc-v1beta1-0.9.0-2.4.0     # (Optional) default = master (master branch of github repo)
+promote_to_falcon: true

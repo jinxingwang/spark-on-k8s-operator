@@ -1,5 +1,4 @@
 .vscode/
-vendor/
 spark-operator
 .idea/
 **/*.iml
